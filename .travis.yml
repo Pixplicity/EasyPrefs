@@ -2,13 +2,33 @@ language: java
 
 jdk: oraclejdk7
 
+branches:
+  only:
+    - master
+    
 before_install:
   - chmod +x gradlew
-  - export TERM=dumb
-  - sudo apt-get install -qq libstdc++6:i386 lib32z1
-  - export COMPONENTS=build-tools-19.0.3,android-19,extra-android-m2repository
-  - curl -L https://raw.github.com/embarkmobile/android-sdk-installer/version-1/android-sdk-installer | bash /dev/stdin --install=$COMPONENTS
-  - source ~/.android-sdk-installer/env
+  # Install base Android SDK
+  - sudo apt-get update -qq
+  - if [ `uname -m` = x86_64 ]; then sudo apt-get install -qq --force-yes libgd2-xpm ia32-libs ia32-libs-multiarch > /dev/null; fi
+  - wget https://dl.google.com/android/android-sdk_r22.6-linux.tgz
+  - tar xzf android-sdk_r22.6-linux.tgz
+  - export ANDROID_HOME=$PWD/android-sdk-linux
+  - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+  # install android build tools
+  - wget https://dl-ssl.google.com/android/repository/build-tools_r19.0.3-linux.zip
+  - unzip build-tools_r19.0.3-linux.zip -d $ANDROID_HOME
+  - mkdir -p $ANDROID_HOME/build-tools/
+  - mv $ANDROID_HOME/android-4.4.2 $ANDROID_HOME/build-tools/19.0.3
+  # Install required components.
+  - echo yes | android update sdk --filter platform-tools --no-ui --force > /dev/null
+  - echo yes | android update sdk --filter android-19 --no-ui --force > /dev/null
+  - echo yes | android update sdk --filter extra-android-support --no-ui --force > /dev/null
+  - echo yes | android update sdk --filter extra-android-m2repository --no-ui --force > /dev/null
+install:
+  - true
+script:
+  - TERM=dumb ./gradlew test assembleDebug
 
 notifications:
   email: false
