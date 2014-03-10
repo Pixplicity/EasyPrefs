@@ -17,3 +17,5 @@ android {
         }
     }
 }
+
+apply from: new File('../gradle-mvn-push.gradle')
