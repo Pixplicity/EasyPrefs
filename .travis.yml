@@ -28,7 +28,7 @@ before_install:
 install:
   - true
 script:
-  - TERM=dumb ./gradlew test assembleDebug
+  - TERM=dumb ./gradlew bundleRelease
 
 notifications:
   email: false
