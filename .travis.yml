@@ -28,7 +28,7 @@ before_install:
 install:
   - true
 script:
-  - TERM=dumb ./gradlew bundleRelease
+  - TERM=dumb ./gradlew clean assemble -PdisablePreDex
 
 notifications:
   email: false

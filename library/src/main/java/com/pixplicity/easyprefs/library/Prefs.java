@@ -1,4 +1,4 @@
-package com.drost.easy.prefs;
+package com.pixplicity.easyprefs.library;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -45,6 +45,7 @@ public class Prefs {
     public static SharedPreferences getPreferences() {
         if (mPrefs != null) {
             return mPrefs;
+
         }
         throw new RuntimeException("Prefs class not correctly instantiated please call Prefs.iniPrefs(context) in the Application class oncreate.");
     }
