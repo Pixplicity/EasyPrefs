@@ -93,7 +93,9 @@ afterEvaluate { project ->
 
     task androidJavadocs(type: Javadoc) {
         //source = android.sourceSets.main.allJava
-        android.libraryVariants.all { variant ->
+        source = android.sourceSets.main.allJava
+        classpath += project.files(android.plugin.getRuntimeJarList().join(File.pathSeparator))
+        /*android.libraryVariants.all { variant ->
             task("generate${variant.name}Javadoc", type: Javadoc) {
                 title = "$name $version API"
                 description "Generates Javadoc for $variant.name."
@@ -103,10 +105,10 @@ afterEvaluate { project ->
                 classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
                 options.links("http://docs.oracle.com/javase/7/docs/api/");
                 options.links("http://d.android.com/reference/");
-                exclude '**/BuildConfig.java'
-                exclude '**/R.java'
+                exclude 'BuildConfig.java'
+                exclude 'R.java'
             }
-        }
+        }*/
     }
 
     task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
