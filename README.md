@@ -22,4 +22,4 @@ After initialization you can use simple one line methode calls like `Prefs.putSt
 If you want to retrieve a String you can simply call `Prefs.getString(key, default value)` now you simply get the String if the Sharedpreferences contain the key or the default String value entered. So you don't use those pesky `contains()` checks or `val != null` checks.
 
 
-[![Build Status](https://travis-ci.org/aegis123/EasyPreferences.png?branch=master)](https://travis-ci.org/aegis123/EasyPreferences)
+[![Build Status](https://travis-ci.org/Pixplicity/EasyPreferences.svg?branch=master)](https://travis-ci.org/Pixplicity/EasyPreferences)
