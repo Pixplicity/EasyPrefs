@@ -23,7 +23,6 @@ If you want to retrieve a String you can simply call `Prefs.getString(key, defau
 
 # Download
 Download the latest [AAR](http://search.maven.org/#search|ga|1|g:"com.pixplicity.easyprefs") or grab via Maven:
-
 ```XML
 <dependency>
   <groupId>com.pixplicity.easyprefs</groupId>
@@ -34,7 +33,6 @@ Download the latest [AAR](http://search.maven.org/#search|ga|1|g:"com.pixplicity
 ```
 
 or Gradle:
-
 ```Java
 compile 'com.pixplicity.easyprefs:library:1.2'
 ```
