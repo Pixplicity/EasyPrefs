@@ -21,5 +21,22 @@ After initialization you can use simple one line methode calls like `Prefs.putSt
 
 If you want to retrieve a String you can simply call `Prefs.getString(key, default value)` now you simply get the String if the Sharedpreferences contain the key or the default String value entered. So you don't use those pesky `contains()` checks or `val != null` checks.
 
+# Download
+Download the latest [AAR](http://search.maven.org/#search|ga|1|g:"com.pixplicity.easyprefs") or grab via Maven:
+
+```XML
+<dependency>
+  <groupId>com.pixplicity.easyprefs</groupId>
+  <artifactId>library</artifactId>
+  <version>1.2</version>
+  <type>aar</type>
+</dependency>
+```
+
+or Gradle:
+
+```Java
+compile 'com.pixplicity.easyprefs:library:1.2'
+```
 
 [![Build Status](https://travis-ci.org/Pixplicity/EasyPreferences.svg?branch=master)](https://travis-ci.org/Pixplicity/EasyPreferences)
