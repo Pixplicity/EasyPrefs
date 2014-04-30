@@ -1,9 +1,9 @@
 EasyPreferences
 ===============
 
-A small library containing a wrapper/helper for the shared preferences of android.
+A small library containing a wrapper/helper for the shared preferences of Android.
 
-With this library you can initialize the shared preference inside the oncreate of the Application class of your app.
+With this library you can initialize the shared preference inside the onCreate of the Application class of your app.
 
 ```Java
 public class PrefsApplication extends Application {
@@ -17,9 +17,11 @@ public class PrefsApplication extends Application {
 }
 ```
 
-After initialization you can use simple one line methode calls like `Prefs.putString(key, string)`, `Prefs.putLong(key, long)` or `Prefs.putBoolean(key, boolean)` to save values to the sharedpreference.
+After initialization you can use simple one line method calls like `Prefs.putString(key, string)`, `Prefs.putLong(key, long)` or `Prefs.putBoolean(key, boolean)` to save values to the Shared Preferences anywhere in your app.
 
-If you want to retrieve a String you can simply call `Prefs.getString(key, default value)` now you simply get the String if the Sharedpreferences contain the key or the default String value entered. So you don't use those pesky `contains()` checks or `val != null` checks.
+Retrieving data from the Shared Preferences can be as simple as `String data = Prefs.getString(key, default value)` now you simply get the String if the Shared Preferences contains the key or the default String value entered. So you don't use those pesky `contains()` checks or `data != null` checks.
+
+For some examples see the sample App.
 
 # Download
 Download the latest [AAR](http://search.maven.org/#search|ga|1|g:"com.pixplicity.easyprefs") or grab via Maven:
