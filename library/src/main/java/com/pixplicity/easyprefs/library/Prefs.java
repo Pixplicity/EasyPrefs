@@ -7,17 +7,12 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 public class Prefs {
 
-    private static String KEY;
-
     private static SharedPreferences mPrefs;
-
-    private static Context mContext;
 
     /**
      * Initialize the Prefs helper class to keep a reference to the SharedPreference for this
@@ -27,12 +22,11 @@ public class Prefs {
      */
     public static void initPrefs(Context context){
         if (mPrefs == null) {
-            mContext = context;
-            KEY = mContext.getPackageName();
-            if (KEY == null) {
+            String key = context.getPackageName();
+            if (key == null) {
                 throw new NullPointerException("Prefs key may not be null");
             }
-            mPrefs = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+            mPrefs = context.getSharedPreferences(key, Context.MODE_PRIVATE);
         }
     }
 
@@ -181,8 +175,7 @@ public class Prefs {
     /**
      * @param key   The name of the preference to modify.
      * @param value The new value for the preference.
-     * @return Returns true if the new values were successfully written
-     * to persistent storage.
+     *
      * @see android.content.SharedPreferences.Editor#putFloat(String, float)
      */
     public static void putFloat(final String key, final float value) {
@@ -198,8 +191,7 @@ public class Prefs {
     /**
      * @param key   The name of the preference to modify.
      * @param value The new value for the preference.
-     * @return Returns true if the new values were successfully written
-     * to persistent storage.
+
      * @see android.content.SharedPreferences.Editor#putBoolean(String, boolean)
      */
     public static void putBoolean(final String key, final boolean value) {
@@ -215,8 +207,7 @@ public class Prefs {
     /**
      * @param key   The name of the preference to modify.
      * @param value The new value for the preference.
-     * @return Returns true if the new values were successfully written
-     * to persistent storage.
+
      * @see android.content.SharedPreferences.Editor#putString(String, String)
      */
     public static void putString(final String key, final String value) {
@@ -232,8 +223,6 @@ public class Prefs {
     /**
      * @param key   The name of the preference to modify.
      * @param value The new value for the preference.
-     * @return Returns true if the new values were successfully written
-     * to persistent storage.
      * @see android.content.SharedPreferences.Editor#putStringSet(String, java.util.Set)
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -250,9 +239,8 @@ public class Prefs {
             }
             editor.putInt(key + "#LENGTH", value.size());
             int i = 0;
-            Iterator<String> iter = value.iterator();
-            while (iter.hasNext()) {
-                editor.putString(key + "[" + i + "]", iter.next());
+            for (String aValue : value) {
+                editor.putString(key + "[" + i + "]", aValue);
                 i++;
             }
             for (; i < stringSetLength; i++) {
@@ -269,8 +257,6 @@ public class Prefs {
 
     /**
      * @param key The name of the preference to remove.
-     * @return Returns true if the new values were successfully written
-     * to persistent storage.
      * @see android.content.SharedPreferences.Editor#remove(String)
      */
     public static void remove(final String key) {
@@ -297,8 +283,6 @@ public class Prefs {
 
     /**
      * @param key The name of the preference to check.
-     * @return Returns true if the preference exists in the preferences,
-     * otherwise false.
      * @see android.content.SharedPreferences#contains(String)
      */
     public static boolean contains(final String key) {
