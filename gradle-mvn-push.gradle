@@ -32,11 +32,11 @@ def getSnapshotRepositoryUrl() {
 }
 
 def getRepositoryUsername() {
-    return hasProperty('MAVEN_CENTRAL') && MAVEN_CENTRAL ? ossrhUsername : pixNexusUser
+    return hasProperty('ossrhUsername')  ? ossrhUsername : ""
 }
 
 def getRepositoryPassword() {
-    return hasProperty('MAVEN_CENTRAL') && MAVEN_CENTRAL ? ossrhPassword : pixNexusPassword
+    return hasProperty('ossrhPassword') ? ossrhPassword : ""
 }
 
 afterEvaluate { project ->
