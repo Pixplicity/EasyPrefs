@@ -25,7 +25,7 @@ public class Prefs {
      *
      * @param context the Application context.
      */
-    public static void initPrefs(Context context) {
+    public static void initPrefs(Context context){
         if (mPrefs == null) {
             mContext = context;
             KEY = mContext.getPackageName();
@@ -33,7 +33,6 @@ public class Prefs {
                 throw new NullPointerException("Prefs key may not be null");
             }
             mPrefs = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
-
         }
     }
 
@@ -45,82 +44,75 @@ public class Prefs {
     public static SharedPreferences getPreferences() {
         if (mPrefs != null) {
             return mPrefs;
-
         }
         throw new RuntimeException(
                 "Prefs class not correctly instantiated please call Prefs.iniPrefs(context) in the Application class onCreate.");
     }
 
     /**
-     * @see android.content.SharedPreferences#getAll()
-     *
      * @return Returns a map containing a list of pairs key/value representing
      * the preferences.
+     * @see android.content.SharedPreferences#getAll()
      */
     public static Map<String, ?> getAll() {
         return getPreferences().getAll();
     }
 
     /**
-     * @see android.content.SharedPreferences#getInt(String, int)
-     *
-     * @param key The name of the preference to retrieve.
+     * @param key      The name of the preference to retrieve.
      * @param defValue Value to return if this preference does not exist.
      * @return Returns the preference value if it exists, or defValue.  Throws
      * ClassCastException if there is a preference with this name that is not
      * an int.
+     * @see android.content.SharedPreferences#getInt(String, int)
      */
     public static int getInt(final String key, final int defValue) {
         return getPreferences().getInt(key, defValue);
     }
 
     /**
-     * @see android.content.SharedPreferences#getBoolean(String, boolean)
-     *
-     * @param key The name of the preference to retrieve.
+     * @param key      The name of the preference to retrieve.
      * @param defValue Value to return if this preference does not exist.
      * @return Returns the preference value if it exists, or defValue.  Throws
      * ClassCastException if there is a preference with this name that is not
      * a boolean.
+     * @see android.content.SharedPreferences#getBoolean(String, boolean)
      */
     public static boolean getBoolean(final String key, final boolean defValue) {
         return getPreferences().getBoolean(key, defValue);
     }
 
     /**
-     * @see android.content.SharedPreferences#getLong(String, long)
-     *
-     * @param key The name of the preference to retrieve.
+     * @param key      The name of the preference to retrieve.
      * @param defValue Value to return if this preference does not exist.
      * @return Returns the preference value if it exists, or defValue.  Throws
      * ClassCastException if there is a preference with this name that is not
      * a long.
+     * @see android.content.SharedPreferences#getLong(String, long)
      */
     public static long getLong(final String key, final long defValue) {
         return getPreferences().getLong(key, defValue);
     }
 
     /**
-     * @see android.content.SharedPreferences#getFloat(String, float)
-     *
-     * @param key The name of the preference to retrieve.
+     * @param key      The name of the preference to retrieve.
      * @param defValue Value to return if this preference does not exist.
      * @return Returns the preference value if it exists, or defValue.  Throws
      * ClassCastException if there is a preference with this name that is not
      * a float.
+     * @see android.content.SharedPreferences#getFloat(String, float)
      */
     public static float getFloat(final String key, final float defValue) {
         return getPreferences().getFloat(key, defValue);
     }
 
     /**
-     * @see android.content.SharedPreferences#getString(String, String)
-     *
-     * @param key The name of the preference to retrieve.
+     * @param key      The name of the preference to retrieve.
      * @param defValue Value to return if this preference does not exist.
      * @return Returns the preference value if it exists, or defValue.  Throws
      * ClassCastException if there is a preference with this name that is not
      * a String.
+     * @see android.content.SharedPreferences#getString(String, String)
      */
     public static String getString(final String key, final String defValue) {
         return getPreferences().getString(key, defValue);
@@ -128,13 +120,12 @@ public class Prefs {
 
 
     /**
-     * @see android.content.SharedPreferences#getStringSet(String, java.util.Set)
-     *
-     * @param key The name of the preference to retrieve.
+     * @param key      The name of the preference to retrieve.
      * @param defValue Value to return if this preference does not exist.
      * @return Returns the preference values if they exist, or defValues.
      * Throws ClassCastException if there is a preference with this name
      * that is not a Set.
+     * @see android.content.SharedPreferences#getStringSet(String, java.util.Set)
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static Set<String> getStringSet(final String key, final Set<String> defValue) {
@@ -154,89 +145,99 @@ public class Prefs {
                 return set;
             }
         }
-        return null;
+        return defValue;
     }
 
     /**
-     * @see android.content.SharedPreferences.Editor#putLong(String, long)
-     *
-     * @param key The name of the preference to modify.
+     * @param key   The name of the preference to modify.
      * @param value The new value for the preference.
-     * @return Returns true if the new values were successfully written
-     * to persistent storage.
+     * @see android.content.SharedPreferences.Editor#putLong(String, long)
      */
-    public static boolean putLong(final String key, final long value) {
+    public static void putLong(final String key, final long value) {
         final Editor editor = getPreferences().edit();
         editor.putLong(key, value);
-        return editor.commit();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+            editor.commit();
+        } else {
+            editor.apply();
+        }
     }
 
     /**
-     * @see android.content.SharedPreferences.Editor#putInt(String, int)
-     *
-     * @param key The name of the preference to modify.
+     * @param key   The name of the preference to modify.
      * @param value The new value for the preference.
-     * @return Returns true if the new values were successfully written
-     * to persistent storage.
+     * @see android.content.SharedPreferences.Editor#putInt(String, int)
      */
-    public static boolean putInt(final String key, final int value) {
+    public static void putInt(final String key, final int value) {
         final Editor editor = getPreferences().edit();
         editor.putInt(key, value);
-        return editor.commit();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+            editor.commit();
+        } else {
+            editor.apply();
+        }
     }
 
     /**
-     * @see android.content.SharedPreferences.Editor#putFloat(String, float)
-     *
-     * @param key The name of the preference to modify.
+     * @param key   The name of the preference to modify.
      * @param value The new value for the preference.
      * @return Returns true if the new values were successfully written
      * to persistent storage.
+     * @see android.content.SharedPreferences.Editor#putFloat(String, float)
      */
-    public static boolean putFloat(final String key, final float value) {
+    public static void putFloat(final String key, final float value) {
         final Editor editor = getPreferences().edit();
         editor.putFloat(key, value);
-        return editor.commit();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+            editor.commit();
+        } else {
+            editor.apply();
+        }
     }
 
     /**
-     * @see android.content.SharedPreferences.Editor#putBoolean(String, boolean)
-     *
-     * @param key The name of the preference to modify.
+     * @param key   The name of the preference to modify.
      * @param value The new value for the preference.
      * @return Returns true if the new values were successfully written
      * to persistent storage.
+     * @see android.content.SharedPreferences.Editor#putBoolean(String, boolean)
      */
-    public static boolean putBoolean(final String key, final boolean value) {
+    public static void putBoolean(final String key, final boolean value) {
         final Editor editor = getPreferences().edit();
         editor.putBoolean(key, value);
-        return editor.commit();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+            editor.commit();
+        } else {
+            editor.apply();
+        }
     }
 
     /**
-     * @see android.content.SharedPreferences.Editor#putString(String, String)
-     *
-     * @param key The name of the preference to modify.
+     * @param key   The name of the preference to modify.
      * @param value The new value for the preference.
      * @return Returns true if the new values were successfully written
      * to persistent storage.
+     * @see android.content.SharedPreferences.Editor#putString(String, String)
      */
-    public static boolean putString(final String key, final String value) {
+    public static void putString(final String key, final String value) {
         final Editor editor = getPreferences().edit();
         editor.putString(key, value);
-        return editor.commit();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+            editor.commit();
+        } else {
+            editor.apply();
+        }
     }
 
     /**
-     * @see android.content.SharedPreferences.Editor#putStringSet(String, java.util.Set)
-     *
-     * @param key The name of the preference to modify.
+     * @param key   The name of the preference to modify.
      * @param value The new value for the preference.
      * @return Returns true if the new values were successfully written
      * to persistent storage.
+     * @see android.content.SharedPreferences.Editor#putStringSet(String, java.util.Set)
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static boolean putStringSet(final String key, final Set<String> value) {
+    public static void putStringSet(final String key, final Set<String> value) {
         final Editor editor = getPreferences().edit();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             editor.putStringSet(key, value);
@@ -259,17 +260,20 @@ public class Prefs {
                 editor.remove(key + "[" + i + "]");
             }
         }
-        return editor.commit();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+            editor.commit();
+        } else {
+            editor.apply();
+        }
     }
 
     /**
-     * @see android.content.SharedPreferences.Editor#remove(String)
-     *
      * @param key The name of the preference to remove.
      * @return Returns true if the new values were successfully written
      * to persistent storage.
+     * @see android.content.SharedPreferences.Editor#remove(String)
      */
-    public static boolean remove(final String key) {
+    public static void remove(final String key) {
         SharedPreferences prefs = getPreferences();
         final Editor editor = prefs.edit();
         if (prefs.contains(key + "#LENGTH")) {
@@ -283,15 +287,19 @@ public class Prefs {
             }
         }
         editor.remove(key);
-        return editor.commit();
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+            editor.commit();
+        } else {
+            editor.apply();
+        }
     }
 
     /**
-     * @see android.content.SharedPreferences#contains(String)
-     *
      * @param key The name of the preference to check.
      * @return Returns true if the preference exists in the preferences,
-     *         otherwise false.
+     * otherwise false.
+     * @see android.content.SharedPreferences#contains(String)
      */
     public static boolean contains(final String key) {
         return getPreferences().contains(key);
