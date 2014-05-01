@@ -29,14 +29,14 @@ Download the latest [AAR](http://search.maven.org/#search|ga|1|g:"com.pixplicity
 <dependency>
   <groupId>com.pixplicity.easyprefs</groupId>
   <artifactId>library</artifactId>
-  <version>1.2</version>
+  <version>1.3</version>
   <type>aar</type>
 </dependency>
 ```
 
 or Gradle:
 ```Java
-compile 'com.pixplicity.easyprefs:library:1.2'
+compile 'com.pixplicity.easyprefs:library:1.3'
 ```
 
 [![Build Status](https://travis-ci.org/Pixplicity/EasyPreferences.svg?branch=master)](https://travis-ci.org/Pixplicity/EasyPreferences)
