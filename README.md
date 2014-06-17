@@ -12,7 +12,7 @@ public class PrefsApplication extends Application {
     public void onCreate() {
         super.onCreate();
         // Initialize the Prefs class
-        Prefs.iniPrefs(this);
+        Prefs.initPrefs(this);
     }
 }
 ```
