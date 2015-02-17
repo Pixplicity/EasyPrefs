@@ -1,5 +1,7 @@
 EasyPreferences
 ===============
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-EasyPreferences-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1488)
+[![Build Status](https://travis-ci.org/Pixplicity/EasyPreferences.svg?branch=master)](https://travis-ci.org/Pixplicity/EasyPreferences)
 
 A small library containing a wrapper/helper for the shared preferences of Android.
 
@@ -38,9 +40,6 @@ or Gradle:
 ```Java
 compile 'com.pixplicity.easyprefs:library:1.3'
 ```
-
-[![Build Status](https://travis-ci.org/Pixplicity/EasyPreferences.svg?branch=master)](https://travis-ci.org/Pixplicity/EasyPreferences)
-
 
 # License
 ```
