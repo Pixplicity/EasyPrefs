@@ -87,6 +87,20 @@ public class Prefs {
     public static long getLong(final String key, final long defValue) {
         return getPreferences().getLong(key, defValue);
     }
+    
+    /**
+     * Returns the double that has been saved as a long raw bits value in the long preferences.
+     *
+     * @param key      The name of the preference to retrieve.
+     * @param defValue the double Value to return if this preference does not exist.
+     * @return Returns the preference value if it exists, or defValue.  Throws
+     * ClassCastException if there is a preference with this name that is not
+     * a long.
+     * @see android.content.SharedPreferences#getLong(String, long)
+     */
+    public static double getDouble(final String key, final double defValue) {
+        return Double.longBitsToDouble(getPreferences().getLong(key, Double.doubleToLongBits(defValue)));
+    }
 
     /**
      * @param key      The name of the preference to retrieve.
@@ -99,7 +113,7 @@ public class Prefs {
     public static float getFloat(final String key, final float defValue) {
         return getPreferences().getFloat(key, defValue);
     }
-
+    
     /**
      * @param key      The name of the preference to retrieve.
      * @param defValue Value to return if this preference does not exist.
@@ -111,7 +125,6 @@ public class Prefs {
     public static String getString(final String key, final String defValue) {
         return getPreferences().getString(key, defValue);
     }
-
 
     /**
      * @param key      The name of the preference to retrieve.
@@ -165,6 +178,23 @@ public class Prefs {
     public static void putInt(final String key, final int value) {
         final Editor editor = getPreferences().edit();
         editor.putInt(key, value);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+            editor.commit();
+        } else {
+            editor.apply();
+        }
+    }
+    
+    /**
+     * Saves the double as a long raw bits inside the preferences.
+     *
+     * @param key   The name of the preference to modify.
+     * @param value The double value to be save in the preferences.
+     * @see android.content.SharedPreferences.Editor#putLong(String, long)
+     */
+    public static void putDouble(final String key, final double value) {
+        final Editor editor = getPreferences().edit();
+        editor.putLong(key, Double.doubleToRawLongBits(value));
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
             editor.commit();
         } else {
