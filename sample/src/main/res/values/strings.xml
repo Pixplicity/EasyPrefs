@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">EasyPreferences</string>
     <string name="save_text">Enter the text you want to save and press save button. If you want you can close the app so see if it really saved the text.</string>
     <string name="saved_text">Saved text: %1$s</string>
@@ -8,5 +6,4 @@
     <string name="force_close">Close</string>
     <string name="save">Save</string>
     <string name="hint">input text</string>
-
 </resources>

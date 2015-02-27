@@ -1,24 +1,35 @@
-apply plugin: 'android'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
+    }
+}
+
+apply plugin: 'android-sdk-manager'
+apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion '19.0.3'
+    compileSdkVersion Integer.parseInt(COMPILE_SDK)
+    buildToolsVersion BUILD_TOOLS
 
     defaultConfig {
-        minSdkVersion 7
-        targetSdkVersion 19
-        versionCode 1
-        versionName "1.0"
+        applicationId "com.pixplicity.easyprefs.sample"
+        minSdkVersion Integer.parseInt(MIN_SDK)
+        targetSdkVersion Integer.parseInt(COMPILE_SDK)
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
     }
     buildTypes {
         release {
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:+'
+    compile 'com.android.support:appcompat-v7:21.0.3'
     compile project(':library')
 }

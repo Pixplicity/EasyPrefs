@@ -20,7 +20,7 @@ public class Prefs {
      *
      * @param context the Application context.
      */
-    public static void initPrefs(Context context){
+    public static void initPrefs(Context context) {
         if (mPrefs == null) {
             String key = context.getPackageName();
             if (key == null) {
@@ -87,7 +87,7 @@ public class Prefs {
     public static long getLong(final String key, final long defValue) {
         return getPreferences().getLong(key, defValue);
     }
-    
+
     /**
      * Returns the double that has been saved as a long raw bits value in the long preferences.
      *
@@ -113,7 +113,7 @@ public class Prefs {
     public static float getFloat(final String key, final float defValue) {
         return getPreferences().getFloat(key, defValue);
     }
-    
+
     /**
      * @param key      The name of the preference to retrieve.
      * @param defValue Value to return if this preference does not exist.
@@ -184,7 +184,7 @@ public class Prefs {
             editor.apply();
         }
     }
-    
+
     /**
      * Saves the double as a long raw bits inside the preferences.
      *
@@ -205,7 +205,6 @@ public class Prefs {
     /**
      * @param key   The name of the preference to modify.
      * @param value The new value for the preference.
-     *
      * @see android.content.SharedPreferences.Editor#putFloat(String, float)
      */
     public static void putFloat(final String key, final float value) {
@@ -221,7 +220,6 @@ public class Prefs {
     /**
      * @param key   The name of the preference to modify.
      * @param value The new value for the preference.
-
      * @see android.content.SharedPreferences.Editor#putBoolean(String, boolean)
      */
     public static void putBoolean(final String key, final boolean value) {
@@ -237,7 +235,6 @@ public class Prefs {
     /**
      * @param key   The name of the preference to modify.
      * @param value The new value for the preference.
-
      * @see android.content.SharedPreferences.Editor#putString(String, String)
      */
     public static void putString(final String key, final String value) {
@@ -317,5 +314,12 @@ public class Prefs {
      */
     public static boolean contains(final String key) {
         return getPreferences().contains(key);
+    }
+
+    /**
+     * @see android.content.SharedPreferences.Editor#clear()
+     */
+    public static Editor clear() {
+        return getPreferences().edit().clear();
     }
 }
