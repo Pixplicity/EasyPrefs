@@ -8,15 +8,15 @@ bintray {
     user = properties.getProperty("bintray.user")
     key = properties.getProperty("bintray.apikey")
 
-    configurations = ['archives']
+    configurations = ['archives'] //When uploading configuration files
     pkg {
-        repo = "maven"
+        repo = 'maven'
         name = POM_NAME
-        desc = POM_DESCRIPTION
+        desc = 'Simple wrapper/helper for shared prefercences'
         websiteUrl = POM_URL
-        issueTrackerUrl = POM_ISSUE_URL
+        issueTrackerUrl = 'https://github.com/Pixplicity/EasyPreferences/issues'
         vcsUrl = POM_SCM_CONNECTION
-        licenses = ["Apache-2.0"]
+        licenses = ['Apache-2.0']
         labels = ['aar', 'android', 'easyprefs']
         publicDownloadNumbers = true
         dryRun = true //Whether to run this as dry-run, without deploying
@@ -26,17 +26,11 @@ bintray {
 
 install {
     repositories.mavenInstaller {
-        println 'Generate POM.XML values'
-        // This generates POM.xml with proper parameters
         pom {
             project {
                 packaging 'aar'
-
-                // Add your description here
                 name POM_NAME
                 url POM_URL
-
-                // Set your license
                 licenses {
                     license {
                         name POM_LICENCE_NAME
@@ -57,7 +51,7 @@ install {
                 }
                 scm {
                     connection POM_SCM_CONNECTION
-                    developerConnection POM_SCM_DEV_CONNECTION
+                    developerConnection POM_SCM_CONNECTION
                     url POM_URL
 
                 }
@@ -65,37 +59,22 @@ install {
         }
     }
 }
-android.libraryVariants.all { variant ->
-    task("generate${variant.name.capitalize()}JavaDoc", type: Javadoc) {
-        description "Generates Javadoc for $variant.name."
-        source = variant.javaCompile.source
-        ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
-        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
 
-        println 'generate javadoc file'
-    }
-}
 task sourcesJar(type: Jar) {
-    println 'create sources jar'
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
 }
 
 task javadoc(type: Javadoc) {
-    println 'Generate Javadoc'
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    println 'create javadoc and sources jar'
-    println 'javadoc location: ' + javadoc.destinationDir
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
-
 artifacts {
-    println 'archive artifacts'
     archives javadocJar
     archives sourcesJar
 }
