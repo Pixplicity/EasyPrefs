@@ -1,4 +1,4 @@
-language: java
+language: android
 
 jdk: oraclejdk8
 
@@ -6,27 +6,25 @@ branches:
   only:
     - master
     
-before_install:
-  # chmod +x gradlew
-  # Install base Android SDK
-  # sudo apt-get update -qq
-  # if [ `uname -m` = x86_64 ]; then sudo apt-get install -qq --force-yes libgd2-xpm ia32-libs ia32-libs-multiarch > /dev/null; fi
-  # wget https://dl.google.com/android/android-sdk_r22.6-linux.tgz
-  # tar xzf android-sdk_r22.6-linux.tgz
-  # export ANDROID_HOME=$PWD/android-sdk-linux
-  # export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-  # install android build tools
-  # wget https://dl-ssl.google.com/android/repository/build-tools_r19.0.3-linux.zip
-  # unzip build-tools_r19.0.3-linux.zip -d $ANDROID_HOME
-  # mkdir -p $ANDROID_HOME/build-tools/
-  # mv $ANDROID_HOME/android-4.4.2 $ANDROID_HOME/build-tools/19.0.3
-  # Install required components.
-  # echo yes | android update sdk --filter platform-tools --no-ui --force > /dev/null
-  # echo yes | android update sdk --filter android-19 --no-ui --force > /dev/null
-  # echo yes | android update sdk --filter extra-android-support --no-ui --force > /dev/null
-  # echo yes | android update sdk --filter extra-android-m2repository --no-ui --force > /dev/null
-install:
-  - true
+android:
+  components:
+    # Uncomment the lines below if you want to
+    # use the latest revision of Android SDK Tools
+    # - platform-tools
+    # - tools
+
+    # The BuildTools version used by your project
+    - build-tools-21.1.2
+
+    # The SDK version used to compile your project
+    - android-21
+
+    # Additional components
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - addon-google_apis-google-21
+    
 script:
   - TERM=dumb ./gradlew clean assemble -PdisablePreDex
 
