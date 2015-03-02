@@ -13,7 +13,6 @@ bintray {
         repo = 'maven'
         name = POM_NAME
         desc = 'Simple wrapper/helper for shared prefercences'
-        websiteUrl = POM_URL
         issueTrackerUrl = 'https://github.com/Pixplicity/EasyPreferences/issues'
         vcsUrl = POM_SCM_CONNECTION
         licenses = ['Apache-2.0']
