@@ -1,12 +1,13 @@
 group = GROUP
 version = VERSION_NAME
+description = 'Simple wrapper/helper for shared prefercences'
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
+    user = properties.hasProperty("bintray.user") ? properties.getProperty("bintray.user") : "empty"
+    key = properties.hasProperty("bintray.user") ? properties.getProperty("bintray.apikey") : "empty"
 
     configurations = ['archives'] //When uploading configuration files
     pkg {
@@ -30,10 +31,12 @@ install {
                 packaging 'aar'
                 name POM_NAME
                 url POM_URL
+                description 'Simple wrapper/helper for shared prefercences'
                 licenses {
                     license {
                         name POM_LICENCE_NAME
                         url POM_LICENCE_URL
+                        distribution 'repo'
                     }
                 }
                 developers {
