@@ -35,6 +35,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:appcompat-v7:22.1.0'
+    compile 'com.jakewharton:butterknife:6.1.0'
     compile project(':library')
 }

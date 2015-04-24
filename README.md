@@ -14,7 +14,12 @@ public class PrefsApplication extends Application {
     public void onCreate() {
         super.onCreate();
         // Initialize the Prefs class
-        Prefs.initPrefs(this);
+        new Prefs.Builder()
+                .setContext(this)
+                .setMode(ContextWrapper.MODE_PRIVATE)
+                .setPrefsName(getPackageName())
+                .setUseDefaultSharedPreference(true)
+                .build();
     }
 }
 ```
@@ -31,14 +36,14 @@ Download the latest [AAR](http://search.maven.org/#search|ga|1|g:"com.pixplicity
 <dependency>
   <groupId>com.pixplicity.easyprefs</groupId>
   <artifactId>library</artifactId>
-  <version>1.4</version>
+  <version>1.5</version>
   <type>aar</type>
 </dependency>
 ```
 
 or Gradle:
-```Java
-compile 'com.pixplicity.easyprefs:library:1.4'
+```Gradle
+compile 'com.pixplicity.easyprefs:library:1.5'
 ```
 
 # License

@@ -32,8 +32,8 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/hint"
-            android:id="@+id/editText"
+            android:id="@+id/et_text"
+            android:hint="@string/hint_text"
             android:layout_gravity="center_vertical"
             android:layout_weight="2" />
 
@@ -41,9 +41,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/save"
-            android:id="@+id/bt_save"
+            android:id="@+id/bt_save_text"
             android:layout_gravity="center_vertical"
             android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:hint="@string/hint_number"
+            android:inputType="numberDecimal" />
+
+        <Button
+            android:id="@+id/bt_save_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="@string/save" />
     </LinearLayout>
 
     <LinearLayout
@@ -61,7 +85,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -73,5 +97,12 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/saved_text"
             android:id="@+id/tv_saved_text" />
+
+        <TextView
+            android:id="@+id/tv_saved_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/saved_number"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
     </LinearLayout>
 </LinearLayout>

@@ -2,12 +2,9 @@ group = GROUP
 version = VERSION_NAME
 description = 'Simple wrapper/helper for shared prefercences'
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
 bintray {
-    user = properties.hasProperty("bintray.user") ? properties.getProperty("bintray.user") : "empty"
-    key = properties.hasProperty("bintray.user") ? properties.getProperty("bintray.apikey") : "empty"
+    user = project.hasProperty("bintray.user") ? project.getProperty("bintray.user") : "empty"
+    key = project.hasProperty("bintray.apikey") ? project.getProperty("bintray.apikey") : "empty"
 
     configurations = ['archives'] //When uploading configuration files
     pkg {
@@ -19,7 +16,7 @@ bintray {
         licenses = ['Apache-2.0']
         labels = ['aar', 'android', 'easyprefs']
         publicDownloadNumbers = true
-        dryRun = true //Whether to run this as dry-run, without deploying
+        dryRun = false //Whether to run this as dry-run, without deploying
         publish = true //If version should be auto published after an bintray_upload
     }
 }

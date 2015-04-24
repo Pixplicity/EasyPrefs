@@ -1,5 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.pixplicity.easyprefs.library">
-
-    <application android:allowBackup="true"/>
-</manifest>
+<manifest package="com.pixplicity.easyprefs.library" />

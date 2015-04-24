@@ -1,9 +1,10 @@
 package com.pixplicity.easyprefs.sample;
 
 
-import com.pixplicity.easyprefs.library.Prefs;
-
 import android.app.Application;
+import android.content.ContextWrapper;
+
+import com.pixplicity.easyprefs.library.Prefs;
 
 public class PrefsApplication extends Application {
 
@@ -11,6 +12,11 @@ public class PrefsApplication extends Application {
     public void onCreate() {
         super.onCreate();
         // Initialize the Prefs class
-        Prefs.initPrefs(this);
+        new Prefs.Builder()
+                .setContext(this)
+                .setMode(ContextWrapper.MODE_PRIVATE)
+                .setPrefsName(getPackageName())
+                .setUseDefaultSharedPreference(true)
+                .build();
     }
 }
