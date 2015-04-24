@@ -36,5 +36,6 @@ android {
         }
     }
 }
-
-apply from: new File('../bintray_upload.gradle')
+if (project.hasProperty("bintray.user") && project.hasProperty("bintray.apikey")) {
+    apply from: new File('../bintray_upload.gradle')
+}
