@@ -70,7 +70,7 @@ public class Prefs {
      * an int.
      * @see android.content.SharedPreferences#getInt(String, int)
      */
-    public static int getInt(final String key, final int defValue) {
+    public static int get(final String key, final int defValue) {
         return getPreferences().getInt(key, defValue);
     }
 
@@ -82,7 +82,7 @@ public class Prefs {
      * a boolean.
      * @see android.content.SharedPreferences#getBoolean(String, boolean)
      */
-    public static boolean getBoolean(final String key, final boolean defValue) {
+    public static boolean get(final String key, final boolean defValue) {
         return getPreferences().getBoolean(key, defValue);
     }
 
@@ -94,7 +94,7 @@ public class Prefs {
      * a long.
      * @see android.content.SharedPreferences#getLong(String, long)
      */
-    public static long getLong(final String key, final long defValue) {
+    public static long get(final String key, final long defValue) {
         return getPreferences().getLong(key, defValue);
     }
 
@@ -108,7 +108,7 @@ public class Prefs {
      * a long.
      * @see android.content.SharedPreferences#getLong(String, long)
      */
-    public static double getDouble(final String key, final double defValue) {
+    public static double get(final String key, final double defValue) {
         return Double.longBitsToDouble(getPreferences().getLong(key, Double.doubleToLongBits(defValue)));
     }
 
@@ -120,7 +120,7 @@ public class Prefs {
      * a float.
      * @see android.content.SharedPreferences#getFloat(String, float)
      */
-    public static float getFloat(final String key, final float defValue) {
+    public static float get(final String key, final float defValue) {
         return getPreferences().getFloat(key, defValue);
     }
 
@@ -132,7 +132,7 @@ public class Prefs {
      * a String.
      * @see android.content.SharedPreferences#getString(String, String)
      */
-    public static String getString(final String key, final String defValue) {
+    public static String get(final String key, final String defValue) {
         return getPreferences().getString(key, defValue);
     }
 
@@ -145,7 +145,7 @@ public class Prefs {
      * @see android.content.SharedPreferences#getStringSet(String, java.util.Set)
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static Set<String> getStringSet(final String key, final Set<String> defValue) {
+    public static Set<String> get(final String key, final Set<String> defValue) {
         SharedPreferences prefs = getPreferences();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             return prefs.getStringSet(key, defValue);
@@ -170,7 +170,7 @@ public class Prefs {
      * @param value The new value for the preference.
      * @see android.content.SharedPreferences.Editor#putLong(String, long)
      */
-    public static void putLong(final String key, final long value) {
+    public static void put(final String key, final long value) {
         final Editor editor = getPreferences().edit();
         editor.putLong(key, value);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
@@ -185,7 +185,7 @@ public class Prefs {
      * @param value The new value for the preference.
      * @see android.content.SharedPreferences.Editor#putInt(String, int)
      */
-    public static void putInt(final String key, final int value) {
+    public static void put(final String key, final int value) {
         final Editor editor = getPreferences().edit();
         editor.putInt(key, value);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
@@ -202,7 +202,7 @@ public class Prefs {
      * @param value The double value to be save in the preferences.
      * @see android.content.SharedPreferences.Editor#putLong(String, long)
      */
-    public static void putDouble(final String key, final double value) {
+    public static void put(final String key, final double value) {
         final Editor editor = getPreferences().edit();
         editor.putLong(key, Double.doubleToRawLongBits(value));
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
@@ -217,7 +217,7 @@ public class Prefs {
      * @param value The new value for the preference.
      * @see android.content.SharedPreferences.Editor#putFloat(String, float)
      */
-    public static void putFloat(final String key, final float value) {
+    public static void put(final String key, final float value) {
         final Editor editor = getPreferences().edit();
         editor.putFloat(key, value);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
@@ -232,7 +232,7 @@ public class Prefs {
      * @param value The new value for the preference.
      * @see android.content.SharedPreferences.Editor#putBoolean(String, boolean)
      */
-    public static void putBoolean(final String key, final boolean value) {
+    public static void put(final String key, final boolean value) {
         final Editor editor = getPreferences().edit();
         editor.putBoolean(key, value);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
@@ -247,7 +247,7 @@ public class Prefs {
      * @param value The new value for the preference.
      * @see android.content.SharedPreferences.Editor#putString(String, String)
      */
-    public static void putString(final String key, final String value) {
+    public static void put(final String key, final String value) {
         final Editor editor = getPreferences().edit();
         editor.putString(key, value);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
@@ -263,7 +263,7 @@ public class Prefs {
      * @see android.content.SharedPreferences.Editor#putStringSet(String, java.util.Set)
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static void putStringSet(final String key, final Set<String> value) {
+    public static void put(final String key, final Set<String> value) {
         final Editor editor = getPreferences().edit();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             editor.putStringSet(key, value);
