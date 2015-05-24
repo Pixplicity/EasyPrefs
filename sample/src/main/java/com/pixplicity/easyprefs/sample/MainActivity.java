@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.inject(this, this);
         // get the saved String from the preference by key, and give a default value
         // if Prefs does not contain the key.
-        String s = Prefs.getString(SAVED_TEXT, getString(R.string.not_found));
-        double d = Prefs.getDouble(SAVED_NUMBER, -1.0);
+        String s = Prefs.get(SAVED_TEXT, getString(R.string.not_found));
+        double d = Prefs.get(SAVED_NUMBER, -1.0);
         updateText(s);
         updateNumber(d, false);
     }
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String text = mTextET.getText().toString();
                 if (!TextUtils.isEmpty(text)) {
                     // one liner to save the String.
-                    Prefs.putString(SAVED_TEXT, text);
+                    Prefs.put(SAVED_TEXT, text);
                     updateText(text);
                 } else {
                     Toast.makeText(this, "trying to save a text with lenght 0", Toast.LENGTH_SHORT).show();
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt_save_number:
                 double d = Double.parseDouble(mNumberET.getText().toString());
-                Prefs.putDouble(SAVED_NUMBER, d);
+                Prefs.put(SAVED_NUMBER, d);
                 updateNumber(d, false);
                 break;
             case R.id.bt_force_close:
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             outState.putString(SAVED_TEXT, text);
         }
         double d = Double.parseDouble(mNumberET.getText().toString());
-        outState.putDouble(SAVED_NUMBER, d);
+        outState.put(SAVED_NUMBER, d);
     }
 
     @Override
