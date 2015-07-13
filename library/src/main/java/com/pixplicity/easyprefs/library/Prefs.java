@@ -21,7 +21,7 @@ public class Prefs {
     /**
      * Initialize the Prefs helper class to keep a reference to the SharedPreference for this
      * application the SharedPreference will use the package name of the application as the Key.
-     *
+     * <p/>
      * This method
      *
      * @param context the Application context.
@@ -42,7 +42,6 @@ public class Prefs {
      * Returns an instance of the shared preference for this app.
      *
      * @return an Instance of the SharedPreference
-     *
      * @throws RuntimeException if sharedpreference instance has not been instatiated yet.
      */
     public static SharedPreferences getPreferences() {
@@ -320,19 +319,33 @@ public class Prefs {
 
     /**
      * @param key The name of the preference to check.
-     * @see android.content.SharedPreferences#contains(String)
      * @return true if preference contains this key value.
+     * @see android.content.SharedPreferences#contains(String)
      */
     public static boolean contains(final String key) {
         return getPreferences().contains(key);
     }
 
     /**
-     * @see android.content.SharedPreferences.Editor#clear()
      * @return the {@link Editor} that has been cleared.
+     * @see android.content.SharedPreferences.Editor#clear()
      */
     public static Editor clear() {
         return getPreferences().edit().clear();
+    }
+
+    /**
+     * Clears the sharedpreference immediately using either commit or apply;
+     *
+     * @see android.content.SharedPreferences.Editor#clear()
+     */
+    public static void clearNow() {
+        final Editor editor = getPreferences().edit().clear();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+            editor.commit();
+        } else {
+            editor.apply();
+        }
     }
 
     /**
