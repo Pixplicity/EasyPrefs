@@ -10,9 +10,8 @@ bintray {
 
     configurations = ['archives'] //When uploading configuration files
     pkg {
-        repo = 'android'
-        userOrg = 'pixplicity'
-        name = ARTIFACT_ID
+        repo = 'maven'
+        name = POM_NAME
         desc = POM_DESCRIPTION
         issueTrackerUrl = POM_ISSUE_URL
         vcsUrl = POM_URL

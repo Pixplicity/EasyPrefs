@@ -327,7 +327,7 @@ public final class Prefs {
     }
 
     /**
-     * @return the {@link Editor} that has been cleared.
+     * @return the {@link Editor} that needs to call commit/apply before it actually clears itself.
      * @see android.content.SharedPreferences.Editor#clear()
      */
     public static Editor clear() {
