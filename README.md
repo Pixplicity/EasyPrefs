@@ -36,14 +36,14 @@ Download the latest [AAR](http://search.maven.org/#search|ga|1|g:"com.pixplicity
 <dependency>
   <groupId>com.pixplicity.easyprefs</groupId>
   <artifactId>library</artifactId>
-  <version>1.5</version>
+  <version>(insert version)</version>
   <type>aar</type>
 </dependency>
 ```
 
 or Gradle:
 ```Gradle
-compile 'com.pixplicity.easyprefs:library:1.5'
+compile 'com.pixplicity.easyprefs:library:(insert version)'
 ```
 
 # License
