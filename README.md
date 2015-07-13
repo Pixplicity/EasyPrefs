@@ -48,7 +48,7 @@ compile 'com.pixplicity.easyprefs:library:1.5'
 
 # License
 ```
-Copyright 2014 Pixplicity, bv.
+Copyright 2014 Pixplicity (http://pixplicity.com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
