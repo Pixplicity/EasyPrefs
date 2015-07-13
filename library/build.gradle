@@ -1,18 +1,5 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.0'
-        classpath 'com.github.dcendents:android-maven-plugin:1.2'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
-    }
-}
-
 apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion Integer.parseInt(COMPILE_SDK)
@@ -36,6 +23,5 @@ android {
         }
     }
 }
-if (project.hasProperty("bintray.user") && project.hasProperty("bintray.apikey")) {
-    apply from: new File('../bintray_upload.gradle')
-}
+
+apply from: new File('../bintray_upload.gradle')

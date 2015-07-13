@@ -1,6 +1,8 @@
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: "com.jfrog.bintray"
+
 group = GROUP
 version = VERSION_NAME
-description = 'Simple wrapper/helper for shared prefercences'
 
 bintray {
     user = project.hasProperty("bintray.user") ? project.getProperty("bintray.user") : "empty"
@@ -8,13 +10,14 @@ bintray {
 
     configurations = ['archives'] //When uploading configuration files
     pkg {
-        repo = 'maven'
-        name = POM_NAME
-        desc = 'Simple wrapper/helper for shared prefercences'
-        issueTrackerUrl = 'https://github.com/Pixplicity/EasyPreferences/issues'
-        vcsUrl = POM_SCM_CONNECTION
+        repo = 'android'
+        userOrg = 'pixplicity'
+        name = ARTIFACT_ID
+        desc = POM_DESCRIPTION
+        issueTrackerUrl = POM_ISSUE_URL
+        vcsUrl = POM_URL
         licenses = ['Apache-2.0']
-        labels = ['aar', 'android', 'easyprefs']
+        labels = ['aar', 'android', 'easypref', 'sharedpreferences']
         publicDownloadNumbers = true
         dryRun = false //Whether to run this as dry-run, without deploying
         publish = true //If version should be auto published after an bintray_upload
@@ -28,12 +31,12 @@ install {
                 packaging 'aar'
                 name POM_NAME
                 url POM_URL
-                description 'Simple wrapper/helper for shared prefercences'
+                description POM_DESCRIPTION
                 licenses {
                     license {
                         name POM_LICENCE_NAME
                         url POM_LICENCE_URL
-                        distribution 'repo'
+                        distribution POM_LICENCE_DIST
                     }
                 }
                 developers {
@@ -50,7 +53,7 @@ install {
                 }
                 scm {
                     connection POM_SCM_CONNECTION
-                    developerConnection POM_SCM_CONNECTION
+                    developerConnection POM_SCM_DEV_CONNECTION
                     url POM_URL
 
                 }
@@ -73,6 +76,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
+
 artifacts {
     archives javadocJar
     archives sourcesJar
