@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class Prefs {
+public final class Prefs {
 
     private static final String DEFAULT_SUFFIX = "_preferences";
     private static final String LENGTH = "#LENGTH";
@@ -21,8 +21,8 @@ public class Prefs {
     /**
      * Initialize the Prefs helper class to keep a reference to the SharedPreference for this
      * application the SharedPreference will use the package name of the application as the Key.
-     * <p/>
-     * This method
+     *
+     * This method is deprecated please us the new builder.
      *
      * @param context the Application context.
      */
