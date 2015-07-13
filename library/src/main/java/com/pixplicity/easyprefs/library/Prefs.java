@@ -21,7 +21,7 @@ public final class Prefs {
     /**
      * Initialize the Prefs helper class to keep a reference to the SharedPreference for this
      * application the SharedPreference will use the package name of the application as the Key.
-     *
+     * <p/>
      * This method is deprecated please us the new builder.
      *
      * @param context the Application context.
@@ -327,25 +327,21 @@ public final class Prefs {
     }
 
     /**
-     * @return the {@link Editor} that needs to call commit/apply before it actually clears itself.
+     * @return the {@link Editor} for chaining. The changes have already been committed/applied through the execution of this method.
      * @see android.content.SharedPreferences.Editor#clear()
      */
     public static Editor clear() {
-        return getPreferences().edit().clear();
-    }
-
-    /**
-     * Clears the sharedpreference immediately using either commit or apply;
-     *
-     * @see android.content.SharedPreferences.Editor#clear()
-     */
-    public static void clearNow() {
         final Editor editor = getPreferences().edit().clear();
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
             editor.commit();
         } else {
             editor.apply();
         }
+        return editor;
+    }
+
+    public static Editor edit() {
+        return getPreferences().edit();
     }
 
     /**
