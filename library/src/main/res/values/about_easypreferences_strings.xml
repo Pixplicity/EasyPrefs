@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="define_easypreferences"></string>
+    <!-- Author section -->
+    <string name="library_easypreferences_author">Pixplicity</string>
+    <string name="library_easypreferences_authorWebsite">http://pixplicity.com</string>
+    <!-- Library section -->
+    <string name="library_easypreferences_libraryName">EasyPreferences</string>
+    <string name="library_easypreferences_libraryDescription">A small library containing a wrapper/helper for the Shared Preferences of Android</string>
+    <string name="library_easypreferences_libraryWebsite">https://github.com/Pixplicity/EasyPreferences</string>
+    <string name="library_easypreferences_libraryVersion">3.2.1</string>
+    <!-- OpenSource section -->
+    <string name="library_easypreferences_isOpenSource">true</string>
+    <string name="library_easypreferences_repositoryLink">https://github.com/Pixplicity/EasyPreferences</string>
+    <!-- ClassPath for autoDetect section -->
+    <string name="library_easypreferences_classPath">com.pixplicity.easyprefs.library</string>
+    <!-- License section -->
+    <string name="library_easypreferences_licenseId">apache_2_0</string>
+    <!-- Custom variables section -->
+</resources>
