@@ -24,18 +24,19 @@ public class PrefsApplication extends Application {
 }
 ```
 #Usage
-After initialization you can use simple one line method calls like below to save values to the Shared Preferences anywhere in your app.
-`Prefs.putString(key, string)`
-`Prefs.putLong(key, long)` or 
-`Prefs.putBoolean(key, boolean)` 
+After initialization, you can use simple one-line methods to save values to the shared preferences anywhere in your app, such as:
 
-Retrieving data from the Shared Preferences can be as simple as 
+- `Prefs.putString(key, string)`
+- `Prefs.putLong(key, long)`
+- `Prefs.putBoolean(key, boolean)` 
+
+Retrieving data from the Shared Preferences can be as simple as:
 
 `String data = Prefs.getString(key, default value)`
 
-now you simply get the String if the Shared Preferences contains the key or the default String value entered. So you don't use those pesky `contains()` checks or `data != null` checks.
+If the shared preferences contains the key, the string will be obtained, otherwise the method returns the default string provided. No need for those pesky `contains()` or `data != null` checks!
 
-For some examples see the sample App.
+For some examples, see the sample App.
 
 # Download
 Download the latest [AAR](http://search.maven.org/#search|ga|1|g:"com.pixplicity.easyprefs") or grab via Maven:
