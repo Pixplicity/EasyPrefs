@@ -23,10 +23,17 @@ public class PrefsApplication extends Application {
     }
 }
 ```
+#Usage
+After initialization you can use simple one line method calls like below to save values to the Shared Preferences anywhere in your app.
+`Prefs.putString(key, string)`
+`Prefs.putLong(key, long)` or 
+`Prefs.putBoolean(key, boolean)` 
 
-After initialization you can use simple one line method calls like `Prefs.putString(key, string)`, `Prefs.putLong(key, long)` or `Prefs.putBoolean(key, boolean)` to save values to the Shared Preferences anywhere in your app.
+Retrieving data from the Shared Preferences can be as simple as 
 
-Retrieving data from the Shared Preferences can be as simple as `String data = Prefs.getString(key, default value)` now you simply get the String if the Shared Preferences contains the key or the default String value entered. So you don't use those pesky `contains()` checks or `data != null` checks.
+`String data = Prefs.getString(key, default value)`
+
+now you simply get the String if the Shared Preferences contains the key or the default String value entered. So you don't use those pesky `contains()` checks or `data != null` checks.
 
 For some examples see the sample App.
 
