@@ -8,7 +8,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.text.TextUtils;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -21,7 +21,7 @@ public final class Prefs {
     /**
      * Initialize the Prefs helper class to keep a reference to the SharedPreference for this
      * application the SharedPreference will use the package name of the application as the Key.
-     *
+     * <p/>
      * This method is deprecated please us the new builder.
      *
      * @param context the Application context.
@@ -150,12 +150,12 @@ public final class Prefs {
             return prefs.getStringSet(key, defValue);
         } else {
             if (prefs.contains(key + LENGTH)) {
-                HashSet<String> set = new HashSet<>();
+                LinkedHashSet<String> set = new LinkedHashSet<>();
                 // Workaround for pre-HC's lack of StringSets
                 int stringSetLength = prefs.getInt(key + LENGTH, -1);
                 if (stringSetLength >= 0) {
                     for (int i = 0; i < stringSetLength; i++) {
-                        prefs.getString(key + "[" + i + "]", null);
+                        set.add(prefs.getString(key + "[" + i + "]", null));
                     }
                 }
                 return set;
@@ -327,7 +327,8 @@ public final class Prefs {
     }
 
     /**
-     * @return the {@link Editor} for chaining. The changes have already been committed/applied through the execution of this method.
+     * @return the {@link Editor} for chaining. The changes have already been committed/applied
+     * through the execution of this method.
      * @see android.content.SharedPreferences.Editor#clear()
      */
     public static Editor clear() {
@@ -345,16 +346,19 @@ public final class Prefs {
     }
 
     /**
-     * Builder class for the EasyPrefs instance. You only have to call this once in the Application onCreate. And in the rest of the code base you can call Prefs.method name.
+     * Builder class for the EasyPrefs instance. You only have to call this once in the Application
+     * onCreate. And in the rest of the code base you can call Prefs.method name.
      */
     public final static class Builder {
+
         private String mKey;
         private Context mContext;
         private int mMode = -1;
         private boolean mUseDefault = false;
 
         /**
-         * Set the filename of the sharedprefence instance  usually this is the applications packagename.xml but for migration purposes or customization.
+         * Set the filename of the sharedprefence instance  usually this is the applications
+         * packagename.xml but for migration purposes or customization.
          *
          * @param prefsName the filename used for the sharedpreference
          * @return the {@link com.pixplicity.easyprefs.library.Prefs.Builder} object.
@@ -394,7 +398,9 @@ public final class Prefs {
         }
 
         /**
-         * Set the default sharedpreference file name. Often the package name of the application is used, but if the {@link android.preference.PreferenceActivity} or {@link android.preference.PreferenceFragment} is used android append that with _preference.
+         * Set the default sharedpreference file name. Often the package name of the application is
+         * used, but if the {@link android.preference.PreferenceActivity} or {@link
+         * android.preference.PreferenceFragment} is used android append that with _preference.
          *
          * @param defaultSharedPreference true if default sharedpreference name should used.
          * @return the {@link com.pixplicity.easyprefs.library.Prefs.Builder} object.
