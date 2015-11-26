@@ -12,6 +12,7 @@ bintray {
     pkg {
         repo = 'maven'
         name = POM_NAME
+        userOrg = POM_ORGANIZATION
         desc = POM_DESCRIPTION
         issueTrackerUrl = POM_ISSUE_URL
         vcsUrl = POM_URL
@@ -29,8 +30,9 @@ install {
             project {
                 packaging 'aar'
                 name POM_NAME
-                url POM_URL
                 description POM_DESCRIPTION
+                url POM_URL
+
                 licenses {
                     license {
                         name POM_LICENCE_NAME
@@ -48,6 +50,11 @@ install {
                         id POM_DEVELOPER_ID_1
                         name POM_DEVELOPER_NAME_1
                         email POM_DEVELOPER_EMAIL_1
+                    }
+                    developer {
+                        id POM_DEVELOPER_ID_2
+                        name POM_DEVELOPER_NAME_2
+                        email POM_DEVELOPER_EMAIL_2
                     }
                 }
                 scm {
