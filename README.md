@@ -1,7 +1,5 @@
 EasyPreferences
 ===============
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-EasyPreferences-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1488)
-[![Build Status](https://travis-ci.org/Pixplicity/EasyPreferences.svg?branch=master)](https://travis-ci.org/Pixplicity/EasyPreferences)
 
 A small library containing a wrapper/helper for the shared preferences of Android.
 
@@ -23,7 +21,9 @@ public class PrefsApplication extends Application {
     }
 }
 ```
-#Usage
+
+# Usage
+
 After initialization, you can use simple one-line methods to save values to the shared preferences anywhere in your app, such as:
 
 - `Prefs.putString(key, string)`
@@ -32,11 +32,24 @@ After initialization, you can use simple one-line methods to save values to the 
 
 Retrieving data from the Shared Preferences can be as simple as:
 
-`String data = Prefs.getString(key, default value)`
+        String data = Prefs.getString(key, default value)
 
 If the shared preferences contains the key, the string will be obtained, otherwise the method returns the default string provided. No need for those pesky `contains()` or `data != null` checks!
 
 For some examples, see the sample App.
+
+## Bonus feature: ordered sets
+
+The default implementation of `getStringSet` on Android **does not preserve the order of the strings in the set**. For this purpose, EasyPreferences adds the methods:
+
+        void Prefs.putOrderedStringSet(String key, Set<String> value);
+
+and
+
+        Set<String> Prefs.getOrderedStringSet(String key, Set<String> defaultValue);
+
+which internally use Java's LinkedHashSet to retain a predictable iteration order. These methods have the added benefit of adding the missing functionality of storing sets to pre-Honeycomb devices.
+
 
 # Download
 Download the latest [AAR](http://search.maven.org/#search|ga|1|g:"com.pixplicity.easyprefs") or grab via Maven:
@@ -44,17 +57,18 @@ Download the latest [AAR](http://search.maven.org/#search|ga|1|g:"com.pixplicity
 <dependency>
   <groupId>com.pixplicity.easyprefs</groupId>
   <artifactId>library</artifactId>
-  <version>(insert version)</version>
+  <version>1.8</version>
   <type>aar</type>
 </dependency>
 ```
 
 or Gradle:
-```Gradle
-compile 'com.pixplicity.easyprefs:library:(insert version)'
+```Groovy
+compile 'com.pixplicity.easyprefs:library:1.8'
 ```
 
 # License
+
 ```
 Copyright 2014 Pixplicity (http://pixplicity.com)
 

@@ -22,9 +22,7 @@ public final class Prefs {
     /**
      * Initialize the Prefs helper class to keep a reference to the SharedPreference for this
      * application the SharedPreference will use the package name of the application as the Key.
-     * <p>
      * This method is deprecated please us the new builder.
-     * </p>
      *
      * @param context the Application context.
      */

@@ -8,7 +8,13 @@ bintray {
     user = project.hasProperty("bintray.user") ? project.getProperty("bintray.user") : "empty"
     key = project.hasProperty("bintray.apikey") ? project.getProperty("bintray.apikey") : "empty"
 
-    configurations = ['archives'] //When uploading configuration files
+    println user
+    println key
+
+    configurations = ['archives']
+    dryRun = false // Whether to run this as dry-run, without deploying
+    publish = false // If version should be auto published after an bintray_upload
+
     pkg {
         repo = 'maven'
         name = POM_NAME
@@ -19,8 +25,12 @@ bintray {
         licenses = ['Apache-2.0']
         labels = ['aar', 'android', 'easypref', 'sharedpreferences']
         publicDownloadNumbers = true
-        dryRun = false //Whether to run this as dry-run, without deploying
-        publish = true //If version should be auto published after an bintray_upload
+
+        version {
+            name = '1.8'
+            desc = 'Added support for storing ordered sets'
+            vcsTag = '1.8'
+        }
     }
 }
 
