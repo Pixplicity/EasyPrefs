@@ -32,7 +32,7 @@ After initialization, you can use simple one-line methods to save values to the 
 
 Retrieving data from the Shared Preferences can be as simple as:
 
-        String data = Prefs.getString(key, default value)
+    String data = Prefs.getString(key, default value)
 
 If the shared preferences contains the key, the string will be obtained, otherwise the method returns the default string provided. No need for those pesky `contains()` or `data != null` checks!
 
@@ -42,29 +42,34 @@ For some examples, see the sample App.
 
 The default implementation of `getStringSet` on Android **does not preserve the order of the strings in the set**. For this purpose, EasyPreferences adds the methods:
 
-        void Prefs.putOrderedStringSet(String key, Set<String> value);
+    void Prefs.putOrderedStringSet(String key, Set<String> value);
 
 and
 
-        Set<String> Prefs.getOrderedStringSet(String key, Set<String> defaultValue);
+    Set<String> Prefs.getOrderedStringSet(String key, Set<String> defaultValue);
 
 which internally use Java's LinkedHashSet to retain a predictable iteration order. These methods have the added benefit of adding the missing functionality of storing sets to pre-Honeycomb devices.
 
 
 # Download
-Download the latest [AAR](http://search.maven.org/#search|ga|1|g:"com.pixplicity.easyprefs") or grab via Maven:
+Download the latest [AAR][1] or grab via Maven:
 ```XML
 <dependency>
   <groupId>com.pixplicity.easyprefs</groupId>
   <artifactId>library</artifactId>
-  <version>1.8</version>
+  <version>1.8.1</version>
   <type>aar</type>
 </dependency>
 ```
 
 or Gradle:
 ```Groovy
-compile 'com.pixplicity.easyprefs:library:1.8'
+repositories {
+    maven { url "http://dl.bintray.com/pixplicity/maven" }
+}
+dependencies {
+    compile 'com.pixplicity.easyprefs:library:1.8.1@aar'
+}
 ```
 
 # License
@@ -84,3 +89,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
+
+[1]: https://bintray.com/artifact/download/pixplicity/maven/com/pixplicity/easyprefs/library/1.8.1/library-1.8.1.aar

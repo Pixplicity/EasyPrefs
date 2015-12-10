@@ -331,7 +331,7 @@ public final class Prefs {
      * @see #putStringSet(String, Set)
      * @see #getOrderedStringSet(String, Set)
      */
-    private static void putOrderedStringSet(String key, Set<String> value) {
+    public static void putOrderedStringSet(String key, Set<String> value) {
         final Editor editor = getPreferences().edit();
         int stringSetLength = 0;
         if (mPrefs.contains(key + LENGTH)) {
