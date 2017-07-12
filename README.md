@@ -52,25 +52,14 @@ which internally use Java's LinkedHashSet to retain a predictable iteration orde
 
 
 # Download
-Download the latest [AAR][1] or grab via Maven:
-```XML
-<dependency>
-  <groupId>com.pixplicity.easyprefs</groupId>
-  <artifactId>library</artifactId>
-  <version>1.8.1</version>
-  <type>aar</type>
-</dependency>
+Grab the latest dependency through Gradle:
+```Groovy
+dependencies {
+    compile 'com.pixplicity.easyprefs:library:1.9.0'
+}
 ```
 
-or Gradle:
-```Groovy
-repositories {
-    maven { url "http://dl.bintray.com/pixplicity/maven" }
-}
-dependencies {
-    compile 'com.pixplicity.easyprefs:library:1.8.1@aar'
-}
-```
+If you prefer Maven or downloading the AAR manually; please check [the Bintray project page](https://bintray.com/pixplicity/android/EasyPrefs).
 
 # License
 
@@ -89,6 +78,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
-
-[1]: https://bintray.com/artifact/download/pixplicity/maven/com/pixplicity/easyprefs/library/1.8.1/library-1.8.1.aar
