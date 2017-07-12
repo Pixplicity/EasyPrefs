@@ -22,3 +22,5 @@ android {
         }
     }
 }
+
+apply from: file('../bintray_upload.gradle')

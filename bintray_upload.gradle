@@ -24,10 +24,13 @@ bintray {
     user = project.hasProperty("bintray.user") ? project.getProperty("bintray.user") : "empty"
     key = project.hasProperty("bintray.apikey") ? project.getProperty("bintray.apikey") : "empty"
 
-    configurations = ['archives'] //When uploading configuration files
+    configurations = ['archives']
+
+    publish = true
+
     pkg {
         repo = 'android'
-        userOrg = POM_ORGANIZATION
+        userOrg = 'pixplicity'
         name = ARTIFACT_ID
         desc = POM_DESCRIPTION
         issueTrackerUrl = POM_ISSUE_URL
@@ -40,6 +43,7 @@ bintray {
         version {
             name = VERSION_NAME
             released  = new Date()
+            desc = "Gene-rate library stable release ${VERSION_NAME}"
         }
     }
 }
@@ -48,10 +52,16 @@ install {
     repositories.mavenInstaller {
         pom {
             project {
+
                 packaging 'aar'
                 name project.name
                 url POM_URL
                 description POM_DESCRIPTION
+
+                groupId GROUP
+                artifactId 'library'
+                version VERSION_NAME
+
                 licenses {
                     license {
                         name POM_LICENCE_NAME
