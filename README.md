@@ -1,5 +1,5 @@
-EasyPreferences
-===============
+EasyPrefs
+===
 
 A small library containing a wrapper/helper for the shared preferences of Android.
 
@@ -40,7 +40,7 @@ For some examples, see the sample App.
 
 ## Bonus feature: ordered sets
 
-The default implementation of `getStringSet` on Android **does not preserve the order of the strings in the set**. For this purpose, EasyPreferences adds the methods:
+The default implementation of `getStringSet` on Android **does not preserve the order of the strings in the set**. For this purpose, EasyPrefs adds the methods:
 
     void Prefs.putOrderedStringSet(String key, Set<String> value);
 
