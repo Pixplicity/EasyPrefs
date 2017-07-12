@@ -1,5 +1,6 @@
 package com.pixplicity.easyprefs.library;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -41,6 +42,7 @@ public final class Prefs {
      * @return an instance of the SharedPreference
      * @throws RuntimeException if SharedPreference instance has not been instantiated yet.
      */
+    @SuppressWarnings("WeakerAccess")
     public static SharedPreferences getPreferences() {
         if (mPrefs != null) {
             return mPrefs;
@@ -151,6 +153,7 @@ public final class Prefs {
      * @see android.content.SharedPreferences#getStringSet(String, java.util.Set)
      * @see #getOrderedStringSet(String, Set)
      */
+    @SuppressWarnings("WeakerAccess")
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static Set<String> getStringSet(final String key, final Set<String> defValue) {
         SharedPreferences prefs = getPreferences();
@@ -174,6 +177,7 @@ public final class Prefs {
      *                            Strings.
      * @see #getStringSet(String, Set)
      */
+    @SuppressWarnings("WeakerAccess")
     public static Set<String> getOrderedStringSet(String key, final Set<String> defValue) {
         SharedPreferences prefs = getPreferences();
         if (prefs.contains(key + LENGTH)) {
@@ -199,11 +203,7 @@ public final class Prefs {
     public static void putLong(final String key, final long value) {
         final Editor editor = getPreferences().edit();
         editor.putLong(key, value);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-            editor.commit();
-        } else {
-            editor.apply();
-        }
+        editor.apply();
     }
 
     /**
@@ -216,11 +216,7 @@ public final class Prefs {
     public static void putInt(final String key, final int value) {
         final Editor editor = getPreferences().edit();
         editor.putInt(key, value);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-            editor.commit();
-        } else {
-            editor.apply();
-        }
+        editor.apply();
     }
 
     /**
@@ -233,11 +229,7 @@ public final class Prefs {
     public static void putDouble(final String key, final double value) {
         final Editor editor = getPreferences().edit();
         editor.putLong(key, Double.doubleToRawLongBits(value));
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-            editor.commit();
-        } else {
-            editor.apply();
-        }
+        editor.apply();
     }
 
     /**
@@ -250,11 +242,7 @@ public final class Prefs {
     public static void putFloat(final String key, final float value) {
         final Editor editor = getPreferences().edit();
         editor.putFloat(key, value);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-            editor.commit();
-        } else {
-            editor.apply();
-        }
+        editor.apply();
     }
 
     /**
@@ -267,11 +255,7 @@ public final class Prefs {
     public static void putBoolean(final String key, final boolean value) {
         final Editor editor = getPreferences().edit();
         editor.putBoolean(key, value);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-            editor.commit();
-        } else {
-            editor.apply();
-        }
+        editor.apply();
     }
 
     /**
@@ -284,11 +268,7 @@ public final class Prefs {
     public static void putString(final String key, final String value) {
         final Editor editor = getPreferences().edit();
         editor.putString(key, value);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-            editor.commit();
-        } else {
-            editor.apply();
-        }
+        editor.apply();
     }
 
     /**
@@ -303,16 +283,13 @@ public final class Prefs {
      * @see android.content.SharedPreferences.Editor#putStringSet(String, java.util.Set)
      * @see #putOrderedStringSet(String, Set)
      */
+    @SuppressWarnings("WeakerAccess")
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static void putStringSet(final String key, final Set<String> value) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             final Editor editor = getPreferences().edit();
             editor.putStringSet(key, value);
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-                editor.commit();
-            } else {
-                editor.apply();
-            }
+            editor.apply();
         } else {
             // Workaround for pre-HC's lack of StringSets
             putOrderedStringSet(key, value);
@@ -331,6 +308,7 @@ public final class Prefs {
      * @see #putStringSet(String, Set)
      * @see #getOrderedStringSet(String, Set)
      */
+    @SuppressWarnings("WeakerAccess")
     public static void putOrderedStringSet(String key, Set<String> value) {
         final Editor editor = getPreferences().edit();
         int stringSetLength = 0;
@@ -348,11 +326,7 @@ public final class Prefs {
             // Remove any remaining values
             editor.remove(key + "[" + i + "]");
         }
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-            editor.commit();
-        } else {
-            editor.apply();
-        }
+        editor.apply();
     }
 
     /**
@@ -376,11 +350,7 @@ public final class Prefs {
         }
         editor.remove(key);
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-            editor.commit();
-        } else {
-            editor.apply();
-        }
+        editor.apply();
     }
 
     /**
@@ -403,11 +373,7 @@ public final class Prefs {
      */
     public static Editor clear() {
         final Editor editor = getPreferences().edit().clear();
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-            editor.commit();
-        } else {
-            editor.apply();
-        }
+        editor.apply();
         return editor;
     }
 
@@ -462,6 +428,7 @@ public final class Prefs {
          * @return the {@link com.pixplicity.easyprefs.library.Prefs.Builder} object.
          * @see Context#getSharedPreferences
          */
+        @SuppressLint({"WorldReadableFiles", "WorldWriteableFiles"})
         public Builder setMode(final int mode) {
             if (mode == ContextWrapper.MODE_PRIVATE || mode == ContextWrapper.MODE_WORLD_READABLE || mode == ContextWrapper.MODE_WORLD_WRITEABLE || mode == ContextWrapper.MODE_MULTI_PROCESS) {
                 mMode = mode;
@@ -481,6 +448,7 @@ public final class Prefs {
          * @param defaultSharedPreference true if default SharedPreference name should used.
          * @return the {@link com.pixplicity.easyprefs.library.Prefs.Builder} object.
          */
+        @SuppressWarnings("SameParameterValue")
         public Builder setUseDefaultSharedPreference(boolean defaultSharedPreference) {
             mUseDefault = defaultSharedPreference;
             return this;
@@ -510,5 +478,7 @@ public final class Prefs {
 
             Prefs.initPrefs(mContext, mKey, mMode);
         }
+
     }
+
 }
