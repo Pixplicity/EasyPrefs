@@ -7,7 +7,6 @@ buildscript {
     }
 }
 
-apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
 
 android {
@@ -35,7 +34,10 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:22.1.0'
-    compile 'com.jakewharton:butterknife:6.1.0'
-    compile project(':library')
+    implementation project(':library')
+
+    implementation 'com.android.support:appcompat-v7:25.4.0'
+
+    implementation 'com.jakewharton:butterknife:8.7.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 }

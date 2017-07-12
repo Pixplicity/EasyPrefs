@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import com.pixplicity.easyprefs.library.Prefs;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 
 
@@ -21,20 +21,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final String SAVED_TEXT = "saved_text";
     public static final String SAVED_NUMBER = "saved_number";
     private static final String FROM_INSTANCE_STATE = " : from instance state";
-    @InjectView(R.id.tv_saved_text)
+
+    @BindView(R.id.tv_saved_text)
     TextView mSavedText;
-    @InjectView(R.id.tv_saved_number)
+
+    @BindView(R.id.tv_saved_number)
     TextView mSavedNumber;
-    @InjectView(R.id.et_text)
+
+    @BindView(R.id.et_text)
     EditText mTextET;
-    @InjectView(R.id.et_number)
+
+    @BindView(R.id.et_number)
     EditText mNumberET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this, this);
+        ButterKnife.bind(this);
         // get the saved String from the preference by key, and give a default value
         // if Prefs does not contain the key.
         String s = Prefs.getString(SAVED_TEXT, getString(R.string.not_found));
@@ -104,4 +108,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             updateNumber(d, true);
         }
     }
+
 }
