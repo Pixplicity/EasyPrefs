@@ -75,7 +75,7 @@ public final class Prefs {
     }
 
     /**
-     * Retrieves a stored int value. Return 0 value if the preference does not exist.
+     * Retrieves a stored int value, or 0 if the preference does not exist.
      *
      * @param key      The name of the preference to retrieve.
      * @return Returns the preference value if it exists, or 0.
@@ -101,10 +101,10 @@ public final class Prefs {
     }
 
     /**
-     * Retrieves a stored boolean value. Return false value if the preference does not exist.
+     * Retrieves a stored boolean value, or false if the preference does not exist.
      *
      * @param key      The name of the preference to retrieve.
-     * @return Returns the preference value if it exists, or defValue.
+     * @return Returns the preference value if it exists, or false.
      * @throws ClassCastException if there is a preference with this name that is not a boolean.
      * @see android.content.SharedPreferences#getBoolean(String, boolean)
      */
@@ -126,10 +126,10 @@ public final class Prefs {
     }
 
     /**
-     * Retrieves a stored long value. Return 0 value if the preference does not exist.
+     * Retrieves a stored long value, or 0 if the preference does not exist.
      *
      * @param key      The name of the preference to retrieve.
-     * @return Returns the preference value if it exists, or defValue.
+     * @return Returns the preference value if it exists, or 0.
      * @throws ClassCastException if there is a preference with this name that is not a long.
      * @see android.content.SharedPreferences#getLong(String, long)
      */
@@ -152,10 +152,10 @@ public final class Prefs {
 
     /**
      * Returns the double that has been saved as a long raw bits value in the long preferences.
-     * Return 0 value if the preference does not exist.
+     * Returns 0 if the preference does not exist.
      *
      * @param key      The name of the preference to retrieve.
-     * @return Returns the preference value if it exists, or defValue.
+     * @return Returns the preference value if it exists, or 0.
      * @throws ClassCastException if there is a preference with this name that is not a long.
      * @see android.content.SharedPreferences#getLong(String, long)
      */
@@ -177,10 +177,10 @@ public final class Prefs {
     }
 
     /**
-     * Retrieves a stored float value. Return 0 value if the preference does not exist.
+     * Retrieves a stored float value, or 0 if the preference does not exist.
      *
      * @param key      The name of the preference to retrieve.
-     * @return Returns the preference value if it exists, or defValue.
+     * @return Returns the preference value if it exists, or 0.
      * @throws ClassCastException if there is a preference with this name that is not a float.
      * @see android.content.SharedPreferences#getFloat(String, float)
      */
@@ -202,10 +202,10 @@ public final class Prefs {
     }
 
     /**
-     * Retrieves a stored String value. Return 0 value if the preference does not exist.
+     * Retrieves a stored String value, or an empty string if the preference does not exist.
      *
      * @param key      The name of the preference to retrieve.
-     * @return Returns the preference value if it exists, or defValue.
+     * @return Returns the preference value if it exists, or "".
      * @throws ClassCastException if there is a preference with this name that is not a String.
      * @see android.content.SharedPreferences#getString(String, String)
      */
