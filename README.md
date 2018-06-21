@@ -5,6 +5,8 @@ A small library containing a wrapper/helper for the shared preferences of Androi
 
 With this library you can initialize the shared preference inside the onCreate of the Application class of your app.
 
+Java:
+
 ```Java
 public class PrefsApplication extends Application {
 
@@ -19,6 +21,25 @@ public class PrefsApplication extends Application {
                 .setUseDefaultSharedPreference(true)
                 .build();
     }
+}
+```
+
+Kotlin:
+
+```Kotlin
+class PrefsApplication : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        // Initialize the Prefs class
+        Prefs.Builder()
+                .setContext(this)
+                .setMode(ContextWrapper.MODE_PRIVATE)
+                .setPrefsName(packageName)
+                .setUseDefaultSharedPreference(true)
+                .build()
+    }
+
 }
 ```
 
@@ -55,11 +76,11 @@ which internally use Java's LinkedHashSet to retain a predictable iteration orde
 Grab the latest dependency through Gradle:
 ```Groovy
 dependencies {
-    compile 'com.pixplicity.easyprefs:library:1.9.0'
+    implementation 'com.pixplicity.easyprefs:library:1.9.0'
 }
 ```
 
-If you prefer Maven or downloading the AAR manually; please check [the Bintray project page](https://bintray.com/pixplicity/android/EasyPrefs).
+[The Bintray project page](https://bintray.com/pixplicity/android/EasyPrefs) contains all AARs of current and previous versions.
 
 # License
 
