@@ -1,8 +1,17 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.14.2'
+    }
+}
+
 apply plugin: 'com.android.library'
+apply plugin: "com.vanniktech.maven.publish"
 
 android {
     compileSdkVersion Integer.parseInt(COMPILE_SDK)
-    buildToolsVersion BUILD_TOOLS
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -22,5 +31,3 @@ android {
         }
     }
 }
-
-apply from: file('../bintray_upload.gradle')
