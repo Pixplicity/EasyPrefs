@@ -78,7 +78,7 @@ Grab the latest dependency through Gradle:
 
 ```Groovy
 dependencies {
-    implementation 'com.pixplicity.easyprefs:library:1.9.0'
+    implementation 'com.pixplicity.easyprefs:library:1.10.0'
 }
 ```
 
