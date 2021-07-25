@@ -33,3 +33,4 @@ build
 
 #Personal Files
 signing.properties
+.signing/

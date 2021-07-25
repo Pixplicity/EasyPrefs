@@ -73,14 +73,15 @@ which internally use Java's LinkedHashSet to retain a predictable iteration orde
 
 
 # Download
+
 Grab the latest dependency through Gradle:
+
 ```Groovy
 dependencies {
     implementation 'com.pixplicity.easyprefs:library:1.9.0'
 }
 ```
 
-[The Bintray project page](https://bintray.com/pixplicity/android/EasyPrefs) contains all AARs of current and previous versions.
 
 # License
 

@@ -2,27 +2,16 @@ buildscript {
     repositories {
         mavenCentral()
     }
-    dependencies {
-        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.14.2'
-    }
 }
 
 apply plugin: 'com.android.library'
-apply plugin: "com.vanniktech.maven.publish"
 
 android {
     compileSdkVersion Integer.parseInt(COMPILE_SDK)
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
-
     defaultConfig {
         minSdkVersion Integer.parseInt(MIN_SDK)
         targetSdkVersion Integer.parseInt(COMPILE_SDK)
-        versionCode Integer.parseInt(VERSION_CODE)
-        versionName VERSION_NAME
     }
     buildTypes {
         release {
@@ -31,3 +20,5 @@ android {
         }
     }
 }
+
+apply from: "${rootProject.projectDir}/mavencentral_publish.gradle"
